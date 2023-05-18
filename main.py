@@ -25,10 +25,7 @@ while len(guessed_states) < 50:
     
     # When we want to exit, it creates another csv file to show which states we couldn't find. 
     if answer_state == "Exit":
-        missing_states = []
-        for state in all_states:
-            if(state not in guessed_states):
-                missing_states.append(state)
+        missing_states = [state for state in all_states if state not in guessed_states]
         new_data = pd.DataFrame(missing_states)
         new_data.to_csv("states_to_learn.csv")
         break
